@@ -9,6 +9,7 @@
 import Foundation
 import MultipeerConnectivity
 
+// used to notify the UI about service events
 protocol ColorServiceManagerDelegate {
     
     func connectedDevicesChanged(manager : ColorServiceManager, connectedDevices: [String])
@@ -18,19 +19,21 @@ protocol ColorServiceManagerDelegate {
 
 class ColorServiceManager : NSObject {
     
-    private let ColorServiceType = "example-color"
-    private let myPeerId = MCPeerID(displayName: UIDevice.currentDevice().name)
+    
+    private let ColorServiceType = "example-color"                              // identifies the service uniquely
+    private let myPeerId = MCPeerID(displayName: UIDevice.currentDevice().name) // displayName is visible to other devices
     private let serviceAdvertiser : MCNearbyServiceAdvertiser
     private let serviceBrowser : MCNearbyServiceBrowser
     var delegate : ColorServiceManagerDelegate?
     
     override init() {
+        // advertises the service
         self.serviceAdvertiser = MCNearbyServiceAdvertiser(peer: myPeerId, discoveryInfo: nil, serviceType: ColorServiceType)
-
+        // scan for the advertised service on other devices
         self.serviceBrowser = MCNearbyServiceBrowser(peer: myPeerId, serviceType: ColorServiceType)
 
         super.init()
-        
+        // start advertising when the object is created
         self.serviceAdvertiser.delegate = self
         self.serviceAdvertiser.startAdvertisingPeer()
         
@@ -39,16 +42,20 @@ class ColorServiceManager : NSObject {
     }
     
     deinit {
+        
+        // stop advertising when the object is destroyed
         self.serviceAdvertiser.stopAdvertisingPeer()
         self.serviceBrowser.stopBrowsingForPeers()
     }
     
+    //
     lazy var session: MCSession = {
         let session = MCSession(peer: self.myPeerId, securityIdentity: nil, encryptionPreference: MCEncryptionPreference.Required)
         session.delegate = self
         return session
     }()
 
+    // sends data to connected peers
     func sendColor(colorName : String) {
         NSLog("%@", "sendColor: \(colorName)")
         
@@ -66,6 +73,7 @@ class ColorServiceManager : NSObject {
     
 }
 
+// logs the delegate events
 extension ColorServiceManager : MCNearbyServiceAdvertiserDelegate {
     
     func advertiser(advertiser: MCNearbyServiceAdvertiser, didNotStartAdvertisingPeer error: NSError) {
@@ -74,18 +82,24 @@ extension ColorServiceManager : MCNearbyServiceAdvertiserDelegate {
     
     func advertiser(advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: NSData?, invitationHandler: ((Bool, MCSession) -> Void)) {
         
+        // when you receive an invitation, accept it by calling the invitationHandler block with true
+        // Note: To keep sessions private the user should be notified and asked to confirm incoming connections. This can
+        // implemented using the MCAdvertiserAssistant classes.
         NSLog("%@", "didReceiveInvitationFromPeer \(peerID)")
         invitationHandler(true, self.session)
     }
 
 }
 
+// log all the browser events
 extension ColorServiceManager : MCNearbyServiceBrowserDelegate {
     
     func browser(browser: MCNearbyServiceBrowser, didNotStartBrowsingForPeers error: NSError) {
         NSLog("%@", "didNotStartBrowsingForPeers: \(error)")
     }
     
+    // invite any peer that is discovered. Note: this code invites any peer automatically. The MCBrowswerViewController class
+    // could be used to scan for peers and invite them manually
     func browser(browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
         NSLog("%@", "foundPeer: \(peerID)")
         NSLog("%@", "invitePeer: \(peerID)")
@@ -110,6 +124,7 @@ extension MCSessionState {
     
 }
 
+// delegate is notified when the connected devices change or when data is received
 extension ColorServiceManager : MCSessionDelegate {
     
     func session(session: MCSession, peer peerID: MCPeerID, didChangeState state: MCSessionState) {
