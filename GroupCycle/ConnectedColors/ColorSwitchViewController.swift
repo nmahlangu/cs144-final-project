@@ -19,27 +19,42 @@ class ColorSwitchViewController: UIViewController {
         super.viewDidLoad()
         colorService.delegate = self
     }
-
-    @IBAction func redTapped(sender: AnyObject) {
-//        self.changeColor(UIColor.redColor())
-//        colorService.sendColor("red")
-        self.statusLabel.text = "red"
+    
+    // action functions which respond to button presses
+    @IBAction func cautionAhead(sender: AnyObject) {
+        let status_update = "Caution Ahead"
+        self.statusLabel.text = status_update
+        colorService.sendColor(status_update)
     }
     
-    @IBAction func yellowTapped(sender: AnyObject) {
-//        self.changeColor(UIColor.yellowColor())
-//        colorService.sendColor("yellow")
-        self.statusLabel.text = "yellow"
+    @IBAction func dangerBehind(sender: AnyObject) {
+        let status_update = "Danger Behind"
+        self.statusLabel.text = status_update
+        colorService.sendColor(status_update)
     }
     
-    @IBAction func greenTapped(sender: AnyObject) {
-//        self.changeColor(UIColor.greenColor())
-//        colorService.sendColor("green")
-        self.statusLabel.text = "green"
+    @IBAction func turnLeft(sender: AnyObject) {
+        let status_update = "Turn Left"
+        self.statusLabel.text = status_update
+        colorService.sendColor(status_update)
     }
     
-    // TODO: add method for each button
-    // TODO: implemented color changed thing for all devices
+    @IBAction func TurnRight(sender: AnyObject) {
+        let status_update = "Turn Right"
+        self.statusLabel.text = status_update
+        colorService.sendColor(status_update)
+    }
+    
+    @IBAction func happyFace(sender: AnyObject) {
+        let status_update = "Doing Good"
+        self.statusLabel.text = status_update
+        colorService.sendColor(status_update)
+    }
+    @IBAction func sadFace(sender: AnyObject) {
+        let status_update = "Need A Break"
+        self.statusLabel.text = status_update
+        colorService.sendColor(status_update)
+    }
     
     func changeColor(color : UIColor) {
         UIView.animateWithDuration(0.2) {
@@ -59,16 +74,8 @@ extension ColorSwitchViewController : ColorServiceManagerDelegate {
     
     func colorChanged(manager: ColorServiceManager, colorString: String) {
         NSOperationQueue.mainQueue().addOperationWithBlock { () -> Void in
-            switch colorString {
-            case "red":
-                self.changeColor(UIColor.redColor())
-            case "yellow":
-                self.changeColor(UIColor.yellowColor())
-            case "green":
-                self.changeColor(UIColor.greenColor())
-            default:
-                NSLog("%@", "Unknown color value received: \(colorString)")
-            }
+            self.statusLabel.text = colorString
+            NSLog("Received \(colorString)")
         }
     }
     
