@@ -10,10 +10,10 @@
 		BF52C0A41AEFE4700042F9E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF52C0A31AEFE4700042F9E8 /* AppDelegate.swift */; };
 		BF52C0A61AEFE4700042F9E8 /* ColorSwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF52C0A51AEFE4700042F9E8 /* ColorSwitchViewController.swift */; };
 		BF52C0A91AEFE4700042F9E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF52C0A71AEFE4700042F9E8 /* Main.storyboard */; };
-		BF52C0AB1AEFE4700042F9E8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF52C0AA1AEFE4700042F9E8 /* Images.xcassets */; };
 		BF52C0AE1AEFE4700042F9E8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF52C0AC1AEFE4700042F9E8 /* LaunchScreen.xib */; };
 		BF52C0BA1AEFE4700042F9E8 /* ConnectedColorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF52C0B91AEFE4700042F9E8 /* ConnectedColorsTests.swift */; };
 		BF52C0C61AEFEAEA0042F9E8 /* ColorServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF52C0C51AEFEAEA0042F9E8 /* ColorServiceManager.swift */; };
+		E13790F01BEB4D8B00B5489E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E13790EF1BEB4D8B00B5489E /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,12 +32,12 @@
 		BF52C0A31AEFE4700042F9E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF52C0A51AEFE4700042F9E8 /* ColorSwitchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSwitchViewController.swift; sourceTree = "<group>"; };
 		BF52C0A81AEFE4700042F9E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BF52C0AA1AEFE4700042F9E8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BF52C0AD1AEFE4700042F9E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		BF52C0B31AEFE4700042F9E8 /* ConnectedColorsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConnectedColorsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF52C0B81AEFE4700042F9E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF52C0B91AEFE4700042F9E8 /* ConnectedColorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedColorsTests.swift; sourceTree = "<group>"; };
 		BF52C0C51AEFEAEA0042F9E8 /* ColorServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorServiceManager.swift; sourceTree = "<group>"; };
+		E13790EF1BEB4D8B00B5489E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,8 +82,8 @@
 				BF52C0A31AEFE4700042F9E8 /* AppDelegate.swift */,
 				BF52C0C51AEFEAEA0042F9E8 /* ColorServiceManager.swift */,
 				BF52C0A51AEFE4700042F9E8 /* ColorSwitchViewController.swift */,
+				E13790EF1BEB4D8B00B5489E /* Images.xcassets */,
 				BF52C0A71AEFE4700042F9E8 /* Main.storyboard */,
-				BF52C0AA1AEFE4700042F9E8 /* Images.xcassets */,
 				BF52C0AC1AEFE4700042F9E8 /* LaunchScreen.xib */,
 				BF52C0A11AEFE4700042F9E8 /* Supporting Files */,
 			);
@@ -198,9 +198,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E13790F01BEB4D8B00B5489E /* Images.xcassets in Resources */,
 				BF52C0A91AEFE4700042F9E8 /* Main.storyboard in Resources */,
 				BF52C0AE1AEFE4700042F9E8 /* LaunchScreen.xib in Resources */,
-				BF52C0AB1AEFE4700042F9E8 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

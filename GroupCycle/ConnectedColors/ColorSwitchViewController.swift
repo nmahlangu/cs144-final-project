@@ -11,6 +11,7 @@ import UIKit
 class ColorSwitchViewController: UIViewController {
 
     @IBOutlet weak var connectionsLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
     
     let colorService = ColorServiceManager()
     
@@ -20,14 +21,25 @@ class ColorSwitchViewController: UIViewController {
     }
 
     @IBAction func redTapped(sender: AnyObject) {
-        self.changeColor(UIColor.redColor())
-        colorService.sendColor("red")
+//        self.changeColor(UIColor.redColor())
+//        colorService.sendColor("red")
+        self.statusLabel.text = "red"
     }
     
     @IBAction func yellowTapped(sender: AnyObject) {
-        self.changeColor(UIColor.yellowColor())
-        colorService.sendColor("yellow")
+//        self.changeColor(UIColor.yellowColor())
+//        colorService.sendColor("yellow")
+        self.statusLabel.text = "yellow"
     }
+    
+    @IBAction func greenTapped(sender: AnyObject) {
+//        self.changeColor(UIColor.greenColor())
+//        colorService.sendColor("green")
+        self.statusLabel.text = "green"
+    }
+    
+    // TODO: add method for each button
+    // TODO: implemented color changed thing for all devices
     
     func changeColor(color : UIColor) {
         UIView.animateWithDuration(0.2) {
@@ -52,6 +64,8 @@ extension ColorSwitchViewController : ColorServiceManagerDelegate {
                 self.changeColor(UIColor.redColor())
             case "yellow":
                 self.changeColor(UIColor.yellowColor())
+            case "green":
+                self.changeColor(UIColor.greenColor())
             default:
                 NSLog("%@", "Unknown color value received: \(colorString)")
             }
