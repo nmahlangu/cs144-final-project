@@ -51,13 +51,13 @@ class ColorSwitchViewController: UIViewController {
     }
     
     @IBAction func happyFace(sender: AnyObject) {
-        let status_update = "Doing Well"
+        let status_update = "Happy Face"
         self.statusLabel.text = status_update
         self.statusImage.image = UIImage(named: "Happy Face")
         colorService.sendColor(status_update)
     }
     @IBAction func sadFace(sender: AnyObject) {
-        let status_update = "Need A Break"
+        let status_update = "Sad Face"
         self.statusLabel.text = status_update
         self.statusImage.image = UIImage(named: "Sad Face")
         colorService.sendColor(status_update)
@@ -81,6 +81,7 @@ extension ColorSwitchViewController : ColorServiceManagerDelegate {
     
     func colorChanged(manager: ColorServiceManager, colorString: String) {
         NSOperationQueue.mainQueue().addOperationWithBlock { () -> Void in
+            self.statusImage.image = UIImage(named: colorString)
             self.statusLabel.text = colorString
             NSLog("Received \(colorString)")
         }
