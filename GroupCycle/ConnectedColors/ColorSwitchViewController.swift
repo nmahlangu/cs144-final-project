@@ -12,6 +12,7 @@ class ColorSwitchViewController: UIViewController {
 
     @IBOutlet weak var connectionsLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var statusImage: UIImageView!
     
     let colorService = ColorServiceManager()
     
@@ -24,35 +25,41 @@ class ColorSwitchViewController: UIViewController {
     @IBAction func cautionAhead(sender: AnyObject) {
         let status_update = "Caution Ahead"
         self.statusLabel.text = status_update
+        self.statusImage.image = UIImage(named: "Caution Ahead")
         colorService.sendColor(status_update)
     }
     
     @IBAction func dangerBehind(sender: AnyObject) {
         let status_update = "Danger Behind"
         self.statusLabel.text = status_update
+        self.statusImage.image = UIImage(named: "Danger Behind")
         colorService.sendColor(status_update)
     }
     
     @IBAction func turnLeft(sender: AnyObject) {
         let status_update = "Turn Left"
         self.statusLabel.text = status_update
+        self.statusImage.image = UIImage(named: "Turn Left")
         colorService.sendColor(status_update)
     }
     
     @IBAction func TurnRight(sender: AnyObject) {
         let status_update = "Turn Right"
         self.statusLabel.text = status_update
+        self.statusImage.image = UIImage(named: "Turn Right")
         colorService.sendColor(status_update)
     }
     
     @IBAction func happyFace(sender: AnyObject) {
-        let status_update = "Doing Good"
+        let status_update = "Doing Well"
         self.statusLabel.text = status_update
+        self.statusImage.image = UIImage(named: "Happy Face")
         colorService.sendColor(status_update)
     }
     @IBAction func sadFace(sender: AnyObject) {
         let status_update = "Need A Break"
         self.statusLabel.text = status_update
+        self.statusImage.image = UIImage(named: "Sad Face")
         colorService.sendColor(status_update)
     }
     
