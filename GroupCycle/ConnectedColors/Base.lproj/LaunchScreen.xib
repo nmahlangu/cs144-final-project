@@ -11,13 +11,19 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="spash750x1334" translatesAutoresizingMaskIntoConstraints="NO" id="7mV-z2-NXc">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spash750x1334" translatesAutoresizingMaskIntoConstraints="NO" id="7mV-z2-NXc">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                     <animations/>
                 </imageView>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="7mV-z2-NXc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="1Nk-M0-pWS"/>
+                <constraint firstAttribute="trailing" secondItem="7mV-z2-NXc" secondAttribute="trailing" id="DFb-ad-av5"/>
+                <constraint firstAttribute="bottom" secondItem="7mV-z2-NXc" secondAttribute="bottom" id="PSz-Lo-YPg"/>
+                <constraint firstItem="7mV-z2-NXc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="lYe-Q0-aC6"/>
+            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
             <point key="canvasLocation" x="548" y="455"/>

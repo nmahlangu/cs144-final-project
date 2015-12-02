@@ -79,7 +79,8 @@ extension ColorSwitchViewController : ColorServiceManagerDelegate {
                 self.connectionsLabel.text = "Awaiting connection..."
             }
             else {
-                self.connectionsLabel.text = "Connections: \(connectedDevices.count)"
+                self.connectionsLabel.text = "Connections: 1"
+//                self.connectionsLabel.text = "Connections: \(connectedDevices.count)"
             }
         }
     }
