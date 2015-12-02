@@ -24,41 +24,41 @@ class ColorSwitchViewController: UIViewController {
     // action functions which respond to button presses
     @IBAction func cautionAhead(sender: AnyObject) {
         let status_update = "Caution Ahead"
-        self.statusLabel.text = status_update
+        self.statusLabel.text = "You sent \(status_update)"
         self.statusImage.image = UIImage(named: "Caution Ahead")
         colorService.sendColor(status_update)
     }
     
     @IBAction func dangerBehind(sender: AnyObject) {
         let status_update = "Danger Behind"
-        self.statusLabel.text = status_update
+        self.statusLabel.text = "You sent \(status_update)"
         self.statusImage.image = UIImage(named: "Danger Behind")
         colorService.sendColor(status_update)
     }
     
     @IBAction func turnLeft(sender: AnyObject) {
         let status_update = "Turn Left"
-        self.statusLabel.text = status_update
+        self.statusLabel.text = "You sent \(status_update)"
         self.statusImage.image = UIImage(named: "Turn Left")
         colorService.sendColor(status_update)
     }
     
     @IBAction func TurnRight(sender: AnyObject) {
         let status_update = "Turn Right"
-        self.statusLabel.text = status_update
+        self.statusLabel.text = "You sent \(status_update)"
         self.statusImage.image = UIImage(named: "Turn Right")
         colorService.sendColor(status_update)
     }
     
     @IBAction func happyFace(sender: AnyObject) {
         let status_update = "Happy Face"
-        self.statusLabel.text = status_update
+        self.statusLabel.text = "You sent \(status_update)"
         self.statusImage.image = UIImage(named: "Happy Face")
         colorService.sendColor(status_update)
     }
     @IBAction func sadFace(sender: AnyObject) {
         let status_update = "Sad Face"
-        self.statusLabel.text = status_update
+        self.statusLabel.text = "You sent \(status_update)"
         self.statusImage.image = UIImage(named: "Sad Face")
         colorService.sendColor(status_update)
     }
@@ -75,14 +75,19 @@ extension ColorSwitchViewController : ColorServiceManagerDelegate {
     
     func connectedDevicesChanged(manager: ColorServiceManager, connectedDevices: [String]) {
         NSOperationQueue.mainQueue().addOperationWithBlock { () -> Void in
-            self.connectionsLabel.text = "Connections: \(connectedDevices)"
+            if (connectedDevices.count < 1){
+                self.connectionsLabel.text = "Awaiting connection..."
+            }
+            else {
+                self.connectionsLabel.text = "Connections: \(connectedDevices.count)"
+            }
         }
     }
     
     func colorChanged(manager: ColorServiceManager, colorString: String) {
         NSOperationQueue.mainQueue().addOperationWithBlock { () -> Void in
             self.statusImage.image = UIImage(named: colorString)
-            self.statusLabel.text = colorString
+            self.statusLabel.text = "Received \(colorString)"
             NSLog("Received \(colorString)")
         }
     }

@@ -14,6 +14,7 @@
 		BF52C0BA1AEFE4700042F9E8 /* ConnectedColorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF52C0B91AEFE4700042F9E8 /* ConnectedColorsTests.swift */; };
 		BF52C0C61AEFEAEA0042F9E8 /* ColorServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF52C0C51AEFEAEA0042F9E8 /* ColorServiceManager.swift */; };
 		E13790F01BEB4D8B00B5489E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E13790EF1BEB4D8B00B5489E /* Images.xcassets */; };
+		E149CC7E1C0F6DB100D5D54B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E149CC7D1C0F6DB100D5D54B /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		BF52C0B91AEFE4700042F9E8 /* ConnectedColorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedColorsTests.swift; sourceTree = "<group>"; };
 		BF52C0C51AEFEAEA0042F9E8 /* ColorServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorServiceManager.swift; sourceTree = "<group>"; };
 		E13790EF1BEB4D8B00B5489E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		E149CC7D1C0F6DB100D5D54B /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				BF52C0A31AEFE4700042F9E8 /* AppDelegate.swift */,
 				BF52C0C51AEFEAEA0042F9E8 /* ColorServiceManager.swift */,
 				BF52C0A51AEFE4700042F9E8 /* ColorSwitchViewController.swift */,
+				E149CC7D1C0F6DB100D5D54B /* HomeViewController.swift */,
 				E13790EF1BEB4D8B00B5489E /* Images.xcassets */,
 				BF52C0A71AEFE4700042F9E8 /* Main.storyboard */,
 				BF52C0AC1AEFE4700042F9E8 /* LaunchScreen.xib */,
@@ -221,6 +224,7 @@
 				BF52C0A61AEFE4700042F9E8 /* ColorSwitchViewController.swift in Sources */,
 				BF52C0A41AEFE4700042F9E8 /* AppDelegate.swift in Sources */,
 				BF52C0C61AEFEAEA0042F9E8 /* ColorServiceManager.swift in Sources */,
+				E149CC7E1C0F6DB100D5D54B /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
