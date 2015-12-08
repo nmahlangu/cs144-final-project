@@ -7,27 +7,27 @@ import Foundation
 import MultipeerConnectivity
 
 // used to notify the UI about service events
-protocol ColorServiceManagerDelegate {
+protocol DataServiceManagerDelegate {
     
-    func connectedDevicesChanged(manager : ColorServiceManager, connectedDevices: [String])
-    func colorChanged(manager : ColorServiceManager, colorString: String)
+    func connectedDevicesChanged(manager : DataServiceManager, connectedDevices: [String])
+    func dataChanged(manager : DataServiceManager, dataString: String)
     
 }
 
-class ColorServiceManager : NSObject {
+class DataServiceManager : NSObject {
     
     
-    private let ColorServiceType = "example-color"                              // identifies the service uniquely
+    private let DataServiceType = "GrpCycleSvc"                                 // identifies the service uniquely
     private let myPeerId = MCPeerID(displayName: UIDevice.currentDevice().name) // displayName is visible to other devices
     private let serviceAdvertiser : MCNearbyServiceAdvertiser
     private let serviceBrowser : MCNearbyServiceBrowser
-    var delegate : ColorServiceManagerDelegate?
+    var delegate : DataServiceManagerDelegate?
     
     override init() {
         // advertises the service
-        self.serviceAdvertiser = MCNearbyServiceAdvertiser(peer: myPeerId, discoveryInfo: nil, serviceType: ColorServiceType)
+        self.serviceAdvertiser = MCNearbyServiceAdvertiser(peer: myPeerId, discoveryInfo: nil, serviceType: DataServiceType)
         // scan for the advertised service on other devices
-        self.serviceBrowser = MCNearbyServiceBrowser(peer: myPeerId, serviceType: ColorServiceType)
+        self.serviceBrowser = MCNearbyServiceBrowser(peer: myPeerId, serviceType: DataServiceType)
 
         super.init()
         // start advertising when the object is created
@@ -52,13 +52,11 @@ class ColorServiceManager : NSObject {
     }()
 
     // sends data to connected peers
-    func sendColor(colorName : String) {
-        NSLog("%@", "sendColor: \(colorName)")
-        
+    func sendData(dataName : String) {
         if session.connectedPeers.count > 0 {
             var error : NSError?
             do {
-                try self.session.sendData(colorName.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!, toPeers: session.connectedPeers, withMode: MCSessionSendDataMode.Reliable)
+                try self.session.sendData(dataName.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!, toPeers: session.connectedPeers, withMode: MCSessionSendDataMode.Reliable)
             } catch let error1 as NSError {
                 error = error1
                 NSLog("%@", "\(error)")
@@ -70,7 +68,7 @@ class ColorServiceManager : NSObject {
 }
 
 // logs the delegate events
-extension ColorServiceManager : MCNearbyServiceAdvertiserDelegate {
+extension DataServiceManager : MCNearbyServiceAdvertiserDelegate {
     
     func advertiser(advertiser: MCNearbyServiceAdvertiser, didNotStartAdvertisingPeer error: NSError) {
         NSLog("%@", "didNotStartAdvertisingPeer: \(error)")
@@ -88,7 +86,7 @@ extension ColorServiceManager : MCNearbyServiceAdvertiserDelegate {
 }
 
 // log all the browser events
-extension ColorServiceManager : MCNearbyServiceBrowserDelegate {
+extension DataServiceManager : MCNearbyServiceBrowserDelegate {
     
     func browser(browser: MCNearbyServiceBrowser, didNotStartBrowsingForPeers error: NSError) {
         NSLog("%@", "didNotStartBrowsingForPeers: \(error)")
@@ -121,7 +119,7 @@ extension MCSessionState {
 }
 
 // delegate is notified when the connected devices change or when data is received
-extension ColorServiceManager : MCSessionDelegate {
+extension DataServiceManager : MCSessionDelegate {
     
     func session(session: MCSession, peer peerID: MCPeerID, didChangeState state: MCSessionState) {
         NSLog("%@", "peer \(peerID) didChangeState: \(state.stringValue())")
@@ -131,7 +129,7 @@ extension ColorServiceManager : MCSessionDelegate {
     func session(session: MCSession, didReceiveData data: NSData, fromPeer peerID: MCPeerID) {
         NSLog("%@", "didReceiveData: \(data.length) bytes")
         let str = NSString(data: data, encoding: NSUTF8StringEncoding) as! String
-        self.delegate?.colorChanged(self, colorString: str)
+        self.delegate?.dataChanged(self, dataString: str)
     }
     
     func session(session: MCSession, didReceiveStream stream: NSInputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
