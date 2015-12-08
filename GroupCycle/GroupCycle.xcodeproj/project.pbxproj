@@ -64,7 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				BF52C0A01AEFE4700042F9E8 /* GroupCycle */,
-				BF52C0B61AEFE4700042F9E8 /* ConnectedColorsTests */,
+				BF52C0B61AEFE4700042F9E8 /* GroupCycleTests */,
 				BF52C09F1AEFE4700042F9E8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -102,12 +102,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		BF52C0B61AEFE4700042F9E8 /* ConnectedColorsTests */ = {
+		BF52C0B61AEFE4700042F9E8 /* GroupCycleTests */ = {
 			isa = PBXGroup;
 			children = (
 				BF52C0B91AEFE4700042F9E8 /* GroupCycleTests.swift */,
 				BF52C0B71AEFE4700042F9E8 /* Supporting Files */,
 			);
+			name = GroupCycleTests;
 			path = ConnectedColorsTests;
 			sourceTree = "<group>";
 		};
