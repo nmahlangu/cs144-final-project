@@ -1,9 +1,6 @@
 //
-//  ColorServiceManager.swift
-//  ConnectedColors
-//
-//  Created by Ralf Ebert on 28/04/15.
-//  Copyright (c) 2015 Ralf Ebert. All rights reserved.
+//  Created by Nicholas Mahlangu, Lexie Schachne,
+//  and Oriana Wang for CS 144r.
 //
 
 import Foundation
@@ -48,7 +45,6 @@ class ColorServiceManager : NSObject {
         self.serviceBrowser.stopBrowsingForPeers()
     }
     
-    //
     lazy var session: MCSession = {
         let session = MCSession(peer: self.myPeerId, securityIdentity: nil, encryptionPreference: MCEncryptionPreference.Required)
         session.delegate = self

@@ -1,9 +1,6 @@
 //
-//  ViewController.swift
-//  ConnectedColors
-//
-//  Created by Ralf Ebert on 28/04/15.
-//  Copyright (c) 2015 Ralf Ebert. All rights reserved.
+//  Created by Nicholas Mahlangu, Lexie Schachne,
+//  and Oriana Wang for CS 144r.
 //
 
 import UIKit
